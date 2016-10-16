@@ -31,7 +31,7 @@ public class ActivemqSpringProxy extends ActivemqProxyFactory{
 	 */
 	public void sendMessage(final String test){
 		jmsTemplate.send(DEFAULT_ActiveMQQueue,new MessageCreator(){
-			@Override
+
 			public Message createMessage(Session session) throws JMSException {
 				return session.createTextMessage(test);
 			}

@@ -27,7 +27,7 @@ public class SpringmvcUpload {
 	 * 
 	 *     Songjian  @Mar 7, 2013
 	 */
-	@RequestMapping(value="/test.action",method=RequestMethod.POST)
+	@RequestMapping(value="/test",method=RequestMethod.POST)
 	public String upload(HttpServletRequest request,@RequestParam("myfile" ) MultipartFile file) throws IOException{
 		String path = request.getSession().getServletContext().getRealPath("/")+ "fileUpload";
 		FileCopyUtils.copy(file.getBytes(),new File(path+File.separator+file.getOriginalFilename())); 
@@ -43,7 +43,7 @@ public class SpringmvcUpload {
 	 * 
 	 *     Songjian  @Mar 7, 2013
 	 */
-	@RequestMapping(value="/test2.action",method=RequestMethod.POST)
+	@RequestMapping(value="/test2",method=RequestMethod.POST)
 	public String fileUpload(HttpServletRequest request)throws IOException { 
 		System.out.println(request.getParameter("type"));
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)request; 
@@ -60,7 +60,7 @@ public class SpringmvcUpload {
 		return "/index/index";
 	}
 	
-	@RequestMapping(value="/download.action",method=RequestMethod.GET)
+	@RequestMapping(value="/download",method=RequestMethod.GET)
 	public String download(HttpServletRequest request)throws IOException { 
 		
 		return null;

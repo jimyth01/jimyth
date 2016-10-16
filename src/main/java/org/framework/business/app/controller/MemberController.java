@@ -17,14 +17,14 @@ public class MemberController{
 
 	
 	
-	@RequestMapping(value = "/add-member.action", method = {RequestMethod.GET})
+	@RequestMapping(value = "/add-member", method = {RequestMethod.GET})
 	public String addMember(ModelMap modelMap){
 		modelMap.addAttribute("member", new Member());
 //		return "#member/add-member";///"redirect:/member/add-member";
 		return "member/add-member";
 	}
 
-	@RequestMapping(value = "/save-member.action", method = {RequestMethod.POST})
+	@RequestMapping(value = "/save-member", method = {RequestMethod.POST})
 	public String saveMember(@ModelAttribute("member") @Valid Member member, BindingResult bindingResult, ModelMap modelMap) {
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("hasErrors", true);

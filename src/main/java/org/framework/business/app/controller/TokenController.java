@@ -22,7 +22,7 @@ public class TokenController{
 
 	
 	
-	@RequestMapping(value = "/index.action", method = {RequestMethod.GET})
+	@RequestMapping(value = "/index", method = {RequestMethod.GET})
 	public String showPage(ModelMap modelMap,HttpServletRequest request,HttpSession session){
 		if(request!=null){
 			System.out.println("session id = "+request.getSession().getId());
@@ -31,7 +31,7 @@ public class TokenController{
 		return "token/index";
 	}
 	
-	@RequestMapping(value = "/mytoken.action", method = {RequestMethod.GET})
+	@RequestMapping(value = "/mytoken", method = {RequestMethod.GET})
 	public String mytoken(ModelMap modelMap,@RequestParam(value=WebConstains.WEBTOKEN$,required=false) String CSRFToken,HttpSession session){
 		if(CSRFToken == null || !CSRFToken.equals(session.getAttribute(CSRFTokenManager.CSRF_TOKEN_FOR_SESSION_ATTR_NAME).toString())){
 			return "error/xss";
@@ -41,7 +41,7 @@ public class TokenController{
 	}
 	
 	
-	@RequestMapping(value = "/ajaxtoken.action", method = {RequestMethod.GET})
+	@RequestMapping(value = "/ajaxtoken", method = {RequestMethod.GET})
 	public String ajaxtoken(ModelMap modelMap,HttpServletRequest request,HttpSession session,HttpServletResponse response){
 		if(StringUtils.isBlank(request.getHeader(WebConstains.AJAX__RequestVerificationToken))
 			||StringUtils.isBlank(session.getAttribute(CSRFTokenManager.CSRF_TOKEN_FOR_SESSION_ATTR_NAME).toString())

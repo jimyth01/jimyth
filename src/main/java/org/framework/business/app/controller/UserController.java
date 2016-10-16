@@ -28,13 +28,13 @@ public class UserController {
 	@Autowired
     private UserService userService;//注入业务接口
 	
-	@RequestMapping(value="/add-user.action",method=RequestMethod.GET)
+	@RequestMapping(value="/add-user",method=RequestMethod.GET)
 	public String toAddUser(ModelMap modelMap){
 		modelMap.addAttribute("userInfo",new UserInfo());
 		return "user/add-user";
 	}
 	
-	@RequestMapping(value = "/save-user.action", method = {RequestMethod.POST})
+	@RequestMapping(value = "/save-user", method = {RequestMethod.POST})
 	public String toSaveUser(@ModelAttribute("userInfo") @Valid UserInfo userInfo, BindingResult bindingResult, ModelMap modelMap){
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("hasErrors", true);
@@ -61,7 +61,7 @@ public class UserController {
 	 * @param modelMap
 	 * @return
 	 */
-	@RequestMapping(value = "/test.action", method = {RequestMethod.POST})
+	@RequestMapping(value = "/test", method = {RequestMethod.POST})
 	public String test(@Valid TestForm test, BindingResult bindingResult, ModelMap modelMap){
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("hasErrors", true);
@@ -76,7 +76,7 @@ public class UserController {
 		return "ok/sccuess";
 	}
 	
-	@RequestMapping(value = "/totest.action", method = {RequestMethod.GET})
+	@RequestMapping(value = "/totest", method = {RequestMethod.GET})
 	public String totest(){
 		return "user/test";	
 	}

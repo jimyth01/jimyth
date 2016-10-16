@@ -19,7 +19,7 @@ public class ExcController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/index.action")
+	@RequestMapping(value = "/index")
 	public String indexPage() {
 		return "error/index";
 	}
@@ -30,7 +30,7 @@ public class ExcController {
 	 * @return
 	 * @throws BusinessException
 	 */
-	@RequestMapping(value = "/josonException.action")
+	@RequestMapping(value = "/josonException")
 	public @ResponseBody Map<String, Object> getjson() throws BusinessException {
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
@@ -46,7 +46,7 @@ public class ExcController {
 	/**
 	 * 
 	 */
-	@RequestMapping(value = "/SystemException.action")
+	@RequestMapping(value = "/SystemException")
 	public void TestSystemException() {
 		throw new SystemException("this is system error ");
 	}
@@ -55,7 +55,7 @@ public class ExcController {
 	 * @throws com.jason.exception.BusinessException
 	 * 
 	 */
-	@RequestMapping(value = "/BusinessException.action")
+	@RequestMapping(value = "/BusinessException")
 	public void TestBusinessException() throws BusinessException {
 		throw new BusinessException("this is Business error ");
 	}

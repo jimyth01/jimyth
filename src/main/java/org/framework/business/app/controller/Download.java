@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class Download {
 
 	
-	@RequestMapping(value="/down.action",method=RequestMethod.GET)
+	@RequestMapping(value="/down",method=RequestMethod.GET)
 	public void downloadFile(@RequestParam("file")String fileName,HttpServletResponse response,HttpServletRequest request){
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("multipart/form-data");
