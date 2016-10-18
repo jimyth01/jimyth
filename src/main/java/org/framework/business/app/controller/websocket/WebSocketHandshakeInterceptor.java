@@ -1,4 +1,4 @@
-package org.framework.business.app.controller.mqtt;
+package org.framework.business.app.controller.websocket;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

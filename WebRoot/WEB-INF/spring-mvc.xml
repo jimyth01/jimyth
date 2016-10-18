@@ -16,11 +16,11 @@
 	<context:component-scan base-package="org.framework.business" />
 
 	<!-- spring-websocket配置start-->
-	<!--<bean id="websocket" class="org.framework.business.app.controller.mqtt.WebConfig" />-->
+	<!--<bean id="websocket" class="org.framework.business.app.controller.websocket.WebConfig" />-->
 	<!--<websocket:handlers>-->
 		<!--<websocket:mapping path="/mqtt" handler="websocket" />-->
 		<!--<websocket:handshake-interceptors>-->
-			<!--<bean class="org.framework.business.app.controller.mqtt.EchoWebSocketHandler" />-->
+			<!--<bean class="org.framework.business.app.controller.websocket.EchoWebSocketHandler" />-->
 		<!--</websocket:handshake-interceptors>-->
 	<!--</websocket:handlers>-->
 	<!-- spring-websocket配置end-->

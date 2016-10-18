@@ -39,7 +39,6 @@ public class MQTTWireFormat implements WireFormat {
     private int maxFrameSize = MAX_MESSAGE_LENGTH;
     private long connectAttemptTimeout = MQTTWireFormat.DEFAULT_CONNECTION_TIMEOUT;
 
-    @Override
     public ByteSequence marshal(Object command) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         DataOutputStream dos = new DataOutputStream(baos);
@@ -48,14 +47,12 @@ public class MQTTWireFormat implements WireFormat {
         return baos.toByteSequence();
     }
 
-    @Override
     public Object unmarshal(ByteSequence packet) throws IOException {
         ByteArrayInputStream stream = new ByteArrayInputStream(packet);
         DataInputStream dis = new DataInputStream(stream);
         return unmarshal(dis);
     }
 
-    @Override
     public void marshal(Object command, DataOutput dataOut) throws IOException {
         MQTTFrame frame = (MQTTFrame) command;
         dataOut.write(frame.header());
@@ -77,7 +74,6 @@ public class MQTTWireFormat implements WireFormat {
         }
     }
 
-    @Override
     public Object unmarshal(DataInput dataIn) throws IOException {
         byte header = dataIn.readByte();
 
@@ -111,7 +107,6 @@ public class MQTTWireFormat implements WireFormat {
     /**
      * @param   version of the wire format
      */
-    @Override
     public void setVersion(int version) {
         this.version = version;
     }
@@ -119,7 +114,6 @@ public class MQTTWireFormat implements WireFormat {
     /**
      * @return the version of the wire format
      */
-    @Override
     public int getVersion() {
         return this.version;
     }

@@ -1,4 +1,4 @@
-package org.framework.business.app.controller.mqtt;
+package org.framework.business.app.controller.websocket;
 
 import org.framework.business.app.service.impl.DefaultEchoService;
 import org.springframework.context.annotation.Bean;

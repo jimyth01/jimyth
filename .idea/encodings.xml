@@ -3,9 +3,9 @@
   <component name="Encoding">
     <file url="file://E:/WorkSpace/activemq/activemq-parent-5.14.1/activemq-web" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/WebRoot/WEB-INF/jsp/websocket/echo.jsp" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/framework/business/app/controller/mqtt/EchoWebSocketHandler.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/framework/business/app/controller/mqtt/codec/MQTTWireFormat.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/framework/business/app/controller/mqtt/codec/WireFormat.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/framework/business/app/controller/websocket/EchoWebSocketHandler.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/framework/business/app/service/EchoService.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/framework/business/app/service/impl/DefaultEchoService.java" charset="UTF-8" />
   </component>
