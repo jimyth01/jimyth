@@ -46,5 +46,17 @@ public class ActivemqSpringProxy extends ActivemqProxyFactory{
 	public String receiveMessage() throws JMSException{
 		return ((TextMessage) jmsTemplate.receive(DEFAULT_ActiveMQQueue)).getText();
 	}
-	
+
+	public String receiveMessage(String name) throws JMSException {
+		Message message =  jmsTemplate.receive(name);
+		return ((TextMessage) jmsTemplate.receive(name)).getText();
+	}
+
+	public void sendMessage( String name, final String message) {
+		jmsTemplate.send(name,new MessageCreator(){
+			public Message createMessage(Session session) throws JMSException {
+				return session.createTextMessage(message);
+			}
+		});
+	}
 }

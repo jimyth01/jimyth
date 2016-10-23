@@ -29,6 +29,7 @@ import java.io.*;
  * Implements marshalling and unmarsalling the <a
  * href="http://mqtt.org/">MQTT</a> protocol.
  */
+
 public class MQTTWireFormat implements WireFormat {
 
     static final int MAX_MESSAGE_LENGTH = 1024 * 1024 * 256;

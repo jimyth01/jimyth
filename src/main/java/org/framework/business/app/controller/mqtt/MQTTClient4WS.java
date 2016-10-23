@@ -1,17 +1,25 @@
 package org.framework.business.app.controller.mqtt;
 
-import org.fusesource.mqtt.client.FutureConnection;
 import org.fusesource.mqtt.client.MQTT;
 
 /**
- * Created by jimyt on 2016-10-18.
+ * Class MQTTClient4WS
+ * @Descreption  TODO 增加描述
+ *
+ * @version        V1.0, 2016.10.19 at 09:29:59 CST
+ * @author         jimyth
  */
 public class MQTTClient4WS {
 
+    /** @Descreption  TODO 增加描述 */
     public MQTT mqtt;
 
-    public void send(){
-
-    }
-
+    /**
+     * Method send
+     *
+     */
+    public void send() {}
 }
+
+
+//~ Formatted by Jindent --- http://www.jindent.com

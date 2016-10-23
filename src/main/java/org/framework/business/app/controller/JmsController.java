@@ -1,26 +1,23 @@
 package org.framework.business.app.controller;
 
-import javax.jms.JMSException;
-
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.apache.log4j.Logger;
 import org.framework.business.exception.BusinessException;
 import org.framework.xcode.jms.activemq.ActivemqSpringProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.annotation.Version;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.portlet.ModelAndView;
 
+import javax.jms.JMSException;
 import java.util.HashMap;
 import java.util.Map;
 
 
 /**
- * 
+ *
  * @author songjian @Mar 3, 2013
  */
 
@@ -29,7 +26,6 @@ import java.util.Map;
 public class JmsController {
 
 	private Logger LOG = Logger.getLogger(getClass());
-//	private static Gson gson=new Gson();
 
 	@Autowired
 	@Qualifier("jms_proxy")
@@ -47,49 +43,43 @@ public class JmsController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value="/send/{topicORqueue}",method=RequestMethod.GET)
-	public  Object sendFromGET(@PathVariable("topicORqueue") String topicORqueue,
-							   @RequestParam("authCode") String authCode,
-							   @RequestParam("name") String name,
+	@RequestMapping(value="/send",method=RequestMethod.GET)
+	public  Object sendFromGET(@RequestParam("name") String name,
 							   @RequestParam("msg") String message){
 		Map<String,Object> map = new HashMap<String,Object>();
-		proxy.sendMessage("hello world！");
+		proxy.sendMessage(name,message);
 		JsonObject object = new JsonObject();
 		map.put("success", Boolean.TRUE);
 		map.put("items", "123");
 		map.put("status", 0);
 		return map;
 	}
+
 	@ResponseBody
-	@RequestMapping(value="/send/{topicORqueue}",method=RequestMethod.POST)
-	public  Object sendFromPOST(@PathVariable("topicORqueue") String topicORqueue,@RequestBody Model model){
+	@RequestMapping(value="/receive",method=RequestMethod.GET)
+	public  Object receiveFromMQ(@RequestParam("name") String name){
 		Map<String,Object> map = new HashMap<String,Object>();
+		try {
+			String ccd = proxy.receiveMessage(name);
+			map.put("message", ccd);
+			LOG.debug("get jms message "+ccd);
+		} catch (JMSException e) {
+			try {
+				throw new BusinessException("JMS 接收出错..");
+			} catch (BusinessException e1) {
+				e1.printStackTrace();
+			}
+		}
 		proxy.sendMessage("hello world！");
 		map.put("success", Boolean.TRUE);
-		map.put("items", "123");
+
 		map.put("status", 0);
 //		map.put("model", model);
 		ModelAndView mav=new ModelAndView("products/list",map);
 		return map;
 	}
 
-	@ResponseBody
-	@RequestMapping(value="/receive/{topicORqueue}",method=RequestMethod.GET)
-	public  Object receiveFromMQ(@PathVariable("topicORqueue") String topicORqueue,
-								 @RequestParam("authCode") String authCode,
-								 @RequestParam("name") String name,
-								 @RequestParam("msg") String message){
-		Map<String,Object> map = new HashMap<String,Object>();
-		proxy.sendMessage("hello world！");
-		map.put("success", Boolean.TRUE);
-		map.put("items", "123");
-		map.put("status", 0);
-//		map.put("model", model);
-		ModelAndView mav=new ModelAndView("products/list",map);
-		return map;
-	}
 
-	
 	@RequestMapping(value="/getjms",method=RequestMethod.GET)
 	public void getTxt() throws BusinessException{
 		try {
@@ -99,5 +89,5 @@ public class JmsController {
 			throw new BusinessException("JMS 接收出错..");
 		}
 	}
-	
+
 }

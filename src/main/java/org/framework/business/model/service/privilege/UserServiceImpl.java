@@ -23,13 +23,11 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 	
 
-	@Override
 	@Cacheable(value="userCache")//缓存数据
 	public <T> T getById(Class<T> clazz, Object id) {
 		return userDao.getById(clazz,id);
 	}
 	
-	@Override
     @Transactional(propagation=Propagation.REQUIRED)
 	@CacheEvict(value="userCache",allEntries=true)//清除缓存
 	public void save(Object entity) {
