@@ -18,9 +18,9 @@ public class MqttServiceImpl implements MqttService {
     /**
      * @Descreption TODO 增加描述
      */
-//    @Autowired
-//    @Qualifier("mqttFormat")
-//    private MQTTWireFormat wireFormat;
+    @Autowired
+    @Qualifier("mqttFormat")
+    private MQTTWireFormat mqttFormat;
 
     public boolean sendMsgFromWsToMq(String message) {
 //        WSDesc msgObject = Ws2MqUtils.decodeFromWsToJson(message);
@@ -34,7 +34,7 @@ public class MqttServiceImpl implements MqttService {
 //        wsMQTTConnection.connect();
         try {
 
-//            MQTTFrame frame = (MQTTFrame) wireFormat.unmarshal(byteSequence);
+            MQTTFrame frame = (MQTTFrame) mqttFormat.unmarshal(byteSequence);
 //            wsMQTTConnection.sendFrame(frame);
         } catch (Exception e) {
             e.printStackTrace();
