@@ -20,7 +20,7 @@
                      http://www.springframework.org/schema/cache/spring-cache-3.2.xsd">
 	
 	 	<!-- 扫描框架以及业务组件(Controller在MVC模块中单独调用Scan) -->
-	<context:component-scan base-package="org.framework" >
+	<context:component-scan base-package="org.jimyth" >
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 	

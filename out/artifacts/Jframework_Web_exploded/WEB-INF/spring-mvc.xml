@@ -13,14 +13,14 @@
                 http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 	
 	<!-- 扫描Controller -->
-	<context:component-scan base-package="org.framework.business" />
+	<context:component-scan base-package="org.jimyth.business" />
 
 	<!-- spring-websocket配置start-->
-	<!--<bean id="websocket" class="org.framework.business.app.controller.mqtt.WebConfig" />-->
+	<!--<bean id="websocket" class="org.jimythsiness.app.controller.websocket.WebConfig" />-->
 	<!--<websocket:handlers>-->
 		<!--<websocket:mapping path="/mqtt" handler="websocket" />-->
 		<!--<websocket:handshake-interceptors>-->
-			<!--<bean class="org.framework.business.app.controller.mqtt.EchoWebSocketHandler" />-->
+			<!--<bean class="org.jimythsiness.app.controller.websocket.EchoWebSocketHandler" />-->
 		<!--</websocket:handshake-interceptors>-->
 	<!--</websocket:handlers>-->
 	<!-- spring-websocket配置end-->
@@ -69,11 +69,11 @@
 	</bean>
 	
 	<!-- 异常处理 -->
-	<bean id="exceptionResolver" class="org.framework.xcode.exception.JFrameworkExceptionResolver">
+	<bean id="exceptionResolver" class="org.jimyth.xcode.exception.JFrameworkExceptionResolver">
 	  <property name="exceptionMappings"> 
      	<props> 
-		  <prop key="org.framework.business.exception.SystemException">error/500</prop> 
-          <prop key="org.framework.business.exception.BusinessException">error/errorpage</prop>
+		  <prop key="org.jimyth.business.exception.SystemException">error/500</prop>
+          <prop key="org.jimyth.business.exception.BusinessException">error/errorpage</prop>
 		  <prop key="java.lang.exception">error/500</prop>
        </props> 
    	  </property>

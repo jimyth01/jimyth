@@ -2,14 +2,14 @@
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/WebRoot/WEB-INF/jsp/websocket/echo.jsp" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/framework/business/app/controller/mqtt/MQTTClient4WS.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/framework/business/app/controller/mqtt/codec/MQTTWireFormat.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/framework/business/app/controller/mqtt/codec/WireFormat.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/framework/business/app/controller/websocket/EchoWebSocketHandler.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/framework/business/app/controller/websocket/WebConfig.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/framework/business/app/service/EchoService.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/framework/business/app/service/impl/DefaultEchoService.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/framework/business/app/service/impl/MqttServiceImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/jimyth/business/app/service/EchoService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/jimyth/business/app/service/impl/DefaultEchoService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/jimyth/business/app/service/impl/MqttServiceImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/jimyth/messageService/mqtt/MQTTClient4WS.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/jimyth/messageService/mqtt/codec/MQTTWireFormat.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/jimyth/messageService/mqtt/codec/WireFormat.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/jimyth/messageService/websocket/controller/EchoWebSocketHandler.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/jimyth/messageService/websocket/controller/WebConfig.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

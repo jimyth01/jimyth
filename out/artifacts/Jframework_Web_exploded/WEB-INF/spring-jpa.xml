@@ -52,7 +52,7 @@
            <property name="persistenceProvider" ref="persistenceProvider"/>
            <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>  
 	       <property name="jpaDialect" ref="jpaDialect"/>  
-	           <property name="packagesToScan" value="org.framework.business.model.entity"/>
+	           <property name="packagesToScan" value="org.jimyth.business.model.entity"/>
 	           <property name="jpaProperties">
 	            <props>
 	             <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
