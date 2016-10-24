@@ -11,6 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.qzdatasoft.framework.annotation.ApiKey;
+import com.qzdatasoft.framework.common.Constants;
+import com.qzdatasoft.framework.common.ReturnMessageInfo;
+import com.qzdatasoft.framework.common.annotation.apiversion.ApiVersion;
 
 /**
  * Class TopicController        @Descreption  TODO 增加描述
@@ -20,126 +26,218 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author         jimyth
  */
 @Controller
-@RequestMapping(value = "/v1/topic")
+@RequestMapping(value = "/mq/{version}/")
 public class TopicController {
 
+    /** @Descreption  TODO 增加描述 */
+    private static final String DEFAULT_SORT_COLUMNS = "";
+
     /**
-     * Method  创建主题
-     *
+     * 创建主题
      *
      * @param JMSDestination    主题名称
      *
-     * @return  ResultModel
+     * @return  创建成功返回(errorcode)
      */
+    @ApiVersion(1)
+    @ApiKey(
+        IsNew = false,
+        Version = 1,
+        ProjectCode = "message",
+        GroupCode = "http",
+        ApiCode = "queue",
+        ApiDescribe = "创建主题",
+        URL = "/mq/{version}/topic/createTopic",
+        Method = "POST",
+        DataHead = "{'loxId':'编码','pd':'名称'}",
+        Data = "{'loxId':'1','pd':'ddddd'}",
+        Param = "JMSDestination:String:主题名称"
+    )
+    @ResponseBody
     @RequestMapping(
         value = "/createTopic",
         method = RequestMethod.POST
     )
-    public ResultModel createTopic(@RequestParam("JMSDestination") String JMSDestination) {
+    public ReturnMessageInfo createTopic(@RequestParam("JMSDestination") String JMSDestination) {
         return null;
     }
 
     /**
-     * Method        删除主题
-     *
+     *  删除主题
      *
      * @param JMSDestination        主题名称
      *
-     * @return  ResultModel
+     * @return  删除成功返回(errorcode)
      */
+    @ApiVersion(1)
+    @ApiKey(
+        IsNew = false,
+        Version = 1,
+        ProjectCode = "message",
+        GroupCode = "http",
+        ApiCode = "queue",
+        ApiDescribe = "删除主题",
+        URL = "/mq/{version}/topic/deleteTopic",
+        Method = "POST",
+        DataHead = "{'loxId':'编码','pd':'名称'}",
+        Data = "{'loxId':'1','pd':'ddddd'}",
+        Param = "JMSDestination:String:主题名称"
+    )
+    @ResponseBody
     @RequestMapping(
         value = "/deleteTopic",
         method = RequestMethod.POST
     )
-    public ResultModel deleteTopic(@RequestParam("JMSDestination") String JMSDestination) {
+    public ReturnMessageInfo deleteTopic(@RequestParam("JMSDestination") String JMSDestination) {
         return null;
     }
 
     /**
-     * Method        查看当前主题的所有的订阅者
+     * 当前主题所有的在线的生产者
      *
-     *
-     * @param queryModel            分页查询条件
-     * @param JMSDestination    主题名称
-     *
-     * @return  List<Subscriber>
-     */
-    @RequestMapping(
-        value = "/listConsumers/all",
-        method = RequestMethod.POST
-    )
-    public List<Subscriber> listAllConsumers(@RequestParam("queryModel") String queryModel,
-                                             @RequestParam("JMSDestination") String JMSDestination) {
-        return null;
-    }
-
-    /**
-     * Method  查看当前主题的 持久化 订阅者
-     *
-     *
-     * @param queryModel              分页查询条件
-     * @param JMSDestination        主题名称
-     *
-     * @return  List<Subscriber>
-     */
-    @RequestMapping(
-        value = "/listConsumers/durable",
-        method = RequestMethod.POST
-    )
-    public List<Subscriber> listDurableConsumers(@RequestParam("queryModel") String queryModel,
-                                                 @RequestParam("JMSDestination") String JMSDestination) {
-        return null;
-    }
-
-    /**
-     * Method   查询当前主题的所有的非持久化订阅
-     *
-     *
-     * @param queryModel            分页查询条件
-     * @param JMSDestination        主题的名称
-     *
-     * @return  List<Subscriber>
-     */
-    @RequestMapping(
-        value = "/listConsumers/non_durable",
-        method = RequestMethod.POST
-    )
-    public List<Subscriber> listNon_durableConsumers(@RequestParam("queryModel") String queryModel,
-                                                     @RequestParam("JMSDestination") String JMSDestination) {
-        return null;
-    }
-
-    /**
-     * Method           当前主题所有的在线的生产者
-     *
-     *
-     * @param queryModel                分页查询条件
      * @param JMSDestination         主题的名称
+     * @param conditions  查询条件(JSON)
+     * @param pagenumber  页码
+     * @param pagesize  页面大小
+     * @param derection  排序
+     * @param orderby  排序字段
      *
-     * @return  List<Producer>
+     * @return  成功返回生产者者个数(errorcode)和生产者(data)
      */
+    @ApiVersion(1)
+    @ApiKey(
+        IsNew = false,
+        Version = 1,
+        ProjectCode = "message",
+        GroupCode = "http",
+        ApiCode = "queue",
+        ApiDescribe = "查看当前主题的所有的订阅者",
+        URL = "/mq/{version}/topic/listProducers",
+        Method = "POST",
+        DataHead = "{'loxId':'编码','pd':'名称'}",
+        Data = "{'loxId':'1','pd':'ddddd'}",
+        Param = "JMSDestination:String:主题名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
+    )
+    @ResponseBody
     @RequestMapping(
         value = "/listProducers",
         method = RequestMethod.POST
     )
-    public List<Producer> listProducers(@RequestParam("queryModel") String queryModel,
-                                        @RequestParam("JMSDestination") String JMSDestination) {
+    public ReturnMessageInfo listProducers(@RequestParam("JMSDestination") String JMSDestination, @RequestParam(
+        value = "conditions",
+        defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
+    ) String conditions, @RequestParam(
+        value = "pagenumber",
+        defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
+    ) int pagenumber, @RequestParam(
+        value = "pagesize",
+        defaultValue = Constants.PAGESIZE_DEFAULT_STR
+    ) int pagesize, @RequestParam(
+        value = "derection",
+        defaultValue = "ASC"
+    ) int derection, @RequestParam(
+        value = "orderby",
+        defaultValue = DEFAULT_SORT_COLUMNS
+    ) String orderby) {
         return null;
     }
 
     /**
-     * Method 获取所有的主题列表
+     * 查看当前主题的所有的订阅者
      *
+     * @param JMSDestination    主题名称
+     * @param conditions  查询条件(JSON)
+     * @param pagenumber  页码
+     * @param pagesize  页面大小
+     * @param derection  排序
+     * @param orderby  排序字段
      *
-     * @param queryModel            分页查询条件
-     *
-     * @return  List<Topic>
+     * @return  成功返回订阅者者个数(errorcode)和订阅者(data)
      */
+    @ApiVersion(1)
+    @ApiKey(
+        IsNew = false,
+        Version = 1,
+        ProjectCode = "message",
+        GroupCode = "http",
+        ApiCode = "queue",
+        ApiDescribe = "查看当前主题的所有的订阅者",
+        URL = "/mq/{version}/topic/listSubscribers",
+        Method = "POST",
+        DataHead = "{'loxId':'编码','pd':'名称'}",
+        Data = "{'loxId':'1','pd':'ddddd'}",
+        Param = "JMSDestination:String:主题名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
+    )
+    @ResponseBody
+    @RequestMapping(
+        value = "/listSubscribers",
+        method = RequestMethod.POST
+    )
+    public ReturnMessageInfo listSubscribers(@RequestParam("JMSDestination") String JMSDestination, @RequestParam(
+        value = "conditions",
+        defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
+    ) String conditions, @RequestParam(
+        value = "pagenumber",
+        defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
+    ) int pagenumber, @RequestParam(
+        value = "pagesize",
+        defaultValue = Constants.PAGESIZE_DEFAULT_STR
+    ) int pagesize, @RequestParam(
+        value = "derection",
+        defaultValue = "ASC"
+    ) int derection, @RequestParam(
+        value = "orderby",
+        defaultValue = DEFAULT_SORT_COLUMNS
+    ) String orderby) {
+        return null;
+    }
+
+    /**
+     * 获取所有的主题列表
+     *
+     * @param conditions  查询条件(JSON)
+     * @param pagenumber  页码
+     * @param pagesize  页面大小
+     * @param derection  排序
+     * @param orderby  排序字段
+     *
+     * @return  成功返回主题个数(errorcode)和主题(data)
+     */
+    @ApiVersion(1)
+    @ApiKey(
+        IsNew = false,
+        Version = 1,
+        ProjectCode = "message",
+        GroupCode = "http",
+        ApiCode = "queue",
+        ApiDescribe = "查看当前主题的所有的订阅者",
+        URL = "/mq/{version}/topic/listTopics",
+        Method = "POST",
+        DataHead = "{'loxId':'编码','pd':'名称'}",
+        Data = "{'loxId':'1','pd':'ddddd'}",
+        Param = "conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
+    )
+    @ResponseBody
     @RequestMapping(
         value = "/listTopics",
         method = RequestMethod.POST
     )
-    public List<Topic> listTopics(@RequestParam("queryModel") String queryModel) {
+    public ReturnMessageInfo listTopics(@RequestParam(
+        value = "conditions",
+        defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
+    ) String conditions, @RequestParam(
+        value = "pagenumber",
+        defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
+    ) int pagenumber, @RequestParam(
+        value = "pagesize",
+        defaultValue = Constants.PAGESIZE_DEFAULT_STR
+    ) int pagesize, @RequestParam(
+        value = "derection",
+        defaultValue = "ASC"
+    ) int derection, @RequestParam(
+        value = "orderby",
+        defaultValue = DEFAULT_SORT_COLUMNS
+    ) String orderby) {
         return null;
     }
 }

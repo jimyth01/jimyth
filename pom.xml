@@ -10,6 +10,12 @@
 
 
     <dependencies>
+        <dependency>
+            <groupId>qzdatasoft</groupId>
+            <artifactId>qzano </artifactId>
+            <version>0.0.0.alpha</version>
+        </dependency>
+
         <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.fusesource.mqtt-client/mqtt-client &ndash;&gt;-->
         <dependency>
         <groupId>org.fusesource.mqtt-client</groupId>
@@ -20,28 +26,28 @@
 
         <!-- activemq -->
         <!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-client -->
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-client</artifactId>
-            <version>5.14.1</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.activemq</groupId>-->
+            <!--<artifactId>activemq-client</artifactId>-->
+            <!--<version>5.14.1</version>-->
+        <!--</dependency>-->
         <!--<dependency>-->
         <!--<groupId>org.apache.activemq</groupId>-->
         <!--<artifactId>activemq-http</artifactId>-->
         <!--<version>5.14.1</version>-->
     <!--</dependency>-->
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-web</artifactId>
-            <version>5.14.1</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.activemq</groupId>-->
+            <!--<artifactId>activemq-web</artifactId>-->
+            <!--<version>5.14.1</version>-->
+        <!--</dependency>-->
 
 
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-pool</artifactId>
-            <version>5.14.1</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.activemq</groupId>-->
+            <!--<artifactId>activemq-pool</artifactId>-->
+            <!--<version>5.14.1</version>-->
+        <!--</dependency>-->
 
 
         <dependency>
