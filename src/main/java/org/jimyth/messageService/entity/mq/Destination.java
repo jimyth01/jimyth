@@ -188,8 +188,6 @@ public class Destination {
 
     /**
      *
-     * 
-     *
      * @param memoryPercentUsage
      */
     public void setMemoryPercentUsage(int memoryPercentUsage) {
