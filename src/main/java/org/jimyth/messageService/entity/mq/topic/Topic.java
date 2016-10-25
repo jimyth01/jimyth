@@ -1,25 +1,17 @@
 package org.jimyth.messageService.entity.mq.topic;
 
+import org.jimyth.messageService.entity.mq.Destination;
+
 /**
- * Class Topic	  TODO 增加描述
+ * Class Topic	  主题
  * 
  *
  * @version        V1.0, 2016.10.23 at 07:46:31 CST
  * @author         jimyth    
  */
-public class Topic {
+public class Topic extends Destination{
 
-    /**   主题名称*/
-    private String name;
 
-    /**   订阅者数量 */
-    private int consumerCount;
-
-    /**   入队列的消息数 */
-    private int enqueueCount;
-
-    /**    出队列的消息数*/
-    private int dequeueCount;
 }
 
 

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 //import org.springframework.web.servlet.mvc.AbstractController;
 //import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.qzdatasoft.framework.regular.service.RegularService;
+
 
 /**
  * Controller基础类
@@ -31,7 +31,7 @@ public abstract  class AbstractController {
         this.request = request;  
         this.response = response;  
         this.session = request.getSession();
-        this.home=RegularService.getApplicationBaseUrl(request);
+//        this.home=RegularService.getApplicationBaseUrl(request);
     }  
     
 }

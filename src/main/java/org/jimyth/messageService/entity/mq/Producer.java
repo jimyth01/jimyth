@@ -1,7 +1,7 @@
 package org.jimyth.messageService.entity.mq;
 
 /**
- * Class Producer	  TODO 增加描述
+ * Class Producer	  生产者
  * 
  *
  * @version        V1.0, 2016.10.23 at 07:47:12 CST
@@ -24,7 +24,7 @@ public class Producer {
     /**   异步转发 */
     private boolean dispatchAsync;
 
-    /**   TODO 增加描述 */
+    /**   是否阻塞 */
     private boolean producerBlocked;
 
     /**    总阻塞时间 */

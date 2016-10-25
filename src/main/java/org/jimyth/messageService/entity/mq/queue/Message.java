@@ -29,6 +29,62 @@ public class Message {
 
     /**   消息类型 */
     private int JMSType;
+
+    public String getJMSMessageID() {
+        return JMSMessageID;
+    }
+
+    public void setJMSMessageID(String JMSMessageID) {
+        this.JMSMessageID = JMSMessageID;
+    }
+
+    public String getJMSCorrelationID() {
+        return JMSCorrelationID;
+    }
+
+    public void setJMSCorrelationID(String JMSCorrelationID) {
+        this.JMSCorrelationID = JMSCorrelationID;
+    }
+
+    public int getJMSPriority() {
+        return JMSPriority;
+    }
+
+    public void setJMSPriority(int JMSPriority) {
+        this.JMSPriority = JMSPriority;
+    }
+
+    public boolean isJMSRedelivered() {
+        return JMSRedelivered;
+    }
+
+    public void setJMSRedelivered(boolean JMSRedelivered) {
+        this.JMSRedelivered = JMSRedelivered;
+    }
+
+    public String getJMSReplyTo() {
+        return JMSReplyTo;
+    }
+
+    public void setJMSReplyTo(String JMSReplyTo) {
+        this.JMSReplyTo = JMSReplyTo;
+    }
+
+    public long getJMSTimestamp() {
+        return JMSTimestamp;
+    }
+
+    public void setJMSTimestamp(long JMSTimestamp) {
+        this.JMSTimestamp = JMSTimestamp;
+    }
+
+    public int getJMSType() {
+        return JMSType;
+    }
+
+    public void setJMSType(int JMSType) {
+        this.JMSType = JMSType;
+    }
 }
 
 

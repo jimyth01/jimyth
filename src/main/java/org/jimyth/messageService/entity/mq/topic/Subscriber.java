@@ -38,6 +38,86 @@ public class Subscriber {
 
     /**   出队列的消息数 */
     private int dequeueCounter;
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public String getSubscriptionName() {
+        return subscriptionName;
+    }
+
+    public void setSubscriptionName(String subscriptionName) {
+        this.subscriptionName = subscriptionName;
+    }
+
+    public String getConnectionId() {
+        return connectionId;
+    }
+
+    public void setConnectionId(String connectionId) {
+        this.connectionId = connectionId;
+    }
+
+    public String getDestinationName() {
+        return destinationName;
+    }
+
+    public void setDestinationName(String destinationName) {
+        this.destinationName = destinationName;
+    }
+
+    public String getSelector() {
+        return selector;
+    }
+
+    public void setSelector(String selector) {
+        this.selector = selector;
+    }
+
+    public int getPendingQueueSize() {
+        return pendingQueueSize;
+    }
+
+    public void setPendingQueueSize(int pendingQueueSize) {
+        this.pendingQueueSize = pendingQueueSize;
+    }
+
+    public int getDispatchedQueueSize() {
+        return dispatchedQueueSize;
+    }
+
+    public void setDispatchedQueueSize(int dispatchedQueueSize) {
+        this.dispatchedQueueSize = dispatchedQueueSize;
+    }
+
+    public int getDispatchedCounter() {
+        return dispatchedCounter;
+    }
+
+    public void setDispatchedCounter(int dispatchedCounter) {
+        this.dispatchedCounter = dispatchedCounter;
+    }
+
+    public int getEnqueueCounter() {
+        return enqueueCounter;
+    }
+
+    public void setEnqueueCounter(int enqueueCounter) {
+        this.enqueueCounter = enqueueCounter;
+    }
+
+    public int getDequeueCounter() {
+        return dequeueCounter;
+    }
+
+    public void setDequeueCounter(int dequeueCounter) {
+        this.dequeueCounter = dequeueCounter;
+    }
 }
 
 
