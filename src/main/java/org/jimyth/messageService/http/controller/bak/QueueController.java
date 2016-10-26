@@ -1,4 +1,4 @@
-package org.jimyth.messageService.http.controller;
+package org.jimyth.messageService.http.controller.bak;
 
 import com.qzdatasoft.framework.annotation.ApiKey;
 import com.qzdatasoft.framework.common.Constants;
@@ -47,8 +47,8 @@ public class QueueController {
             ApiDescribe = "创建新的队列",
             URL = "/mq/{version}/queue/create",
             Method = "POST",
-            DataHead = "",
-            Data = "",
+            DataHead = "{'JMSDestination':'队列名称'}",
+            Data = "{'JMSDestination':'testqueue'}",
             Param = "JMSDestination:String:队列名称"
     )
     @RequestMapping(
@@ -77,8 +77,8 @@ public class QueueController {
             ApiDescribe = "删除消息",
             URL = "/mq/{version}/queue/deleteMessage",
             Method = "POST",
-            DataHead = "",
-            Data = "",
+            DataHead = "{'JMSDestination':'队列名称'}",
+            Data = "{'JMSDestination':'testqueue'}",
             Param = "messageId:String:消息Id"
     )
     @RequestMapping(
@@ -109,8 +109,8 @@ public class QueueController {
             ApiDescribe = "删除队列",
             URL = "/mq/{version}/queue/deleteQueue",
             Method = "POST",
-            DataHead = "",
-            Data = "",
+            DataHead = "{'JMSDestination':'队列名称'}",
+            Data = "{'JMSDestination':'testqueue'}",
             Param = "JMSDestination:String:队列名称"
     )
     @RequestMapping(
@@ -146,8 +146,8 @@ public class QueueController {
             ApiDescribe = "获取队列当前在线的所有的消费者，根据给定的条件查询数据，目前只支持单字段排序",
             URL = "/mq/{version}/queue/listConsumers",
             Method = "POST",
-            DataHead = "",
-            Data = "",
+            DataHead = "{'JMSDestination':'队列名称'}",
+            Data = "{'JMSDestination':'testqueue'}",
             Param = "JMSDestination:String队列名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
     )
     @RequestMapping(
@@ -209,8 +209,8 @@ public class QueueController {
             ApiDescribe = "获取队列的消息，根据给定的条件查询数据，目前只支持单字段排序",
             URL = "/mq/{version}/queue/listMessages",
             Method = "POST",
-            DataHead = "",
-            Data = "",
+            DataHead = "{'JMSDestination':'队列名称'}",
+            Data = "{'JMSDestination':'testqueue'}",
             Param = "JMSDestination:String队列名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
     )
     @ResponseBody
@@ -273,8 +273,8 @@ public class QueueController {
             ApiDescribe = "获取队列当前在线的所有的生产者，根据给定的条件查询数据，目前只支持单字段排序",
             URL = "/mq/{version}/queue/listProducers",
             Method = "POST",
-            DataHead = "",
-            Data = "",
+            DataHead = "{'JMSDestination':'队列名称'}",
+            Data = "{'JMSDestination':'testqueue'}",
             Param = "JMSDestination:String队列名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
 
     )
@@ -337,8 +337,6 @@ public class QueueController {
             ApiDescribe = "获取所有的队列，根据给定的条件查询数据，目前只支持单字段排序",
             URL = "/mq/{version}/queue/listQueues",
             Method = "POST",
-            DataHead = "",
-            Data = "",
             Param = "conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
     )
     @ResponseBody
@@ -396,8 +394,8 @@ public class QueueController {
             ApiDescribe = "清除队列中未消费的消息，将其置为已消费",
             URL = "/mq/{version}/queue/purge",
             Method = "POST",
-            DataHead = "",
-            Data = "",
+            DataHead = "{'JMSDestination':'队列名称'}",
+            Data = "{'JMSDestination':'testqueue'}",
             Param = "JMSDestination:String队列名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
     )
     @ResponseBody
@@ -425,8 +423,8 @@ public class QueueController {
             ApiDescribe = "接收一条消息",
             URL = "/mq/{version}/queue/receive",
             Method = "POST",
-            DataHead = "",
-            Data = "",
+            DataHead = "{'JMSDestination':'队列名称'}",
+            Data = "{'JMSDestination':'testqueue'}",
             Param = "JMSDestination:String队列名称"
     )
     @ResponseBody
@@ -455,8 +453,8 @@ public class QueueController {
             ApiDescribe = "发送文本消息",
             URL = "/mq/{version}/queue/send",
             Method = "POST",
-            DataHead = "",
-            Data = "",
+            DataHead = "{'JMSDestination':'队列名称','message':'消息内容'}",
+            Data = "{'JMSDestination':'testqueue','message':'这是一条消息 for testqueue'}",
             Param = "JMSDestination:String队列名称,message:String:消息内容"
     )
     @ResponseBody
@@ -486,8 +484,8 @@ public class QueueController {
             ApiDescribe = "根据消息ID查看消息",
             URL = "/mq/{version}/queue/viewMessage",
             Method = "POST",
-            DataHead = "",
-            Data = "",
+            DataHead = "{'JMSDestination':'队列名称','messageId':'消息Id'}",
+            Data = "{'JMSDestination':'testqueue','messageId':'messageId'}",
             Param = "JMSDestination:String队列名称,messageId:String:消息Id"
     )
     @ResponseBody

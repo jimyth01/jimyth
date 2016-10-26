@@ -34,22 +34,22 @@ public class TopicController {
      */
     @ApiVersion(1)
     @ApiKey(
-        IsNew = false,
-        Version = 1,
-        ProjectCode = "message",
-        GroupCode = "http",
-        ApiCode = "queue",
-        ApiDescribe = "创建主题",
-        URL = "/mq/{version}/topic/createTopic",
-        Method = "POST",
-        DataHead = "{'JMSDestination':'主题名称'}",
-        Data = "{'JMSDestination':'testTopic'}",
-        Param = "JMSDestination:String:主题名称"
+            IsNew = false,
+            Version = 1,
+            ProjectCode = "message",
+            GroupCode = "http",
+            ApiCode = "queue",
+            ApiDescribe = "创建主题",
+            URL = "/mq/{version}/topic/createTopic",
+            Method = "POST",
+            DataHead = "",
+            Data = "",
+            Param = "JMSDestination:String:主题名称"
     )
     @ResponseBody
     @RequestMapping(
-        value = "/createTopic",
-        method = RequestMethod.POST
+            value = "/createTopic",
+            method = RequestMethod.POST
     )
     public ReturnMessageInfo createTopic(@RequestParam("JMSDestination") String JMSDestination) {
         return null;
@@ -63,22 +63,22 @@ public class TopicController {
      */
     @ApiVersion(1)
     @ApiKey(
-        IsNew = false,
-        Version = 1,
-        ProjectCode = "message",
-        GroupCode = "http",
-        ApiCode = "queue",
-        ApiDescribe = "删除主题",
-        URL = "/mq/{version}/topic/deleteTopic",
-        Method = "POST",
-        DataHead = "{'JMSDestination':'主题名称'}",
-        Data = "{'JMSDestination':'testTopic'}",
-        Param = "JMSDestination:String:主题名称"
+            IsNew = false,
+            Version = 1,
+            ProjectCode = "message",
+            GroupCode = "http",
+            ApiCode = "queue",
+            ApiDescribe = "删除主题",
+            URL = "/mq/{version}/topic/deleteTopic",
+            Method = "POST",
+            DataHead = "",
+            Data = "",
+            Param = "JMSDestination:String:主题名称"
     )
     @ResponseBody
     @RequestMapping(
-        value = "/deleteTopic",
-        method = RequestMethod.POST
+            value = "/deleteTopic",
+            method = RequestMethod.POST
     )
     public ReturnMessageInfo deleteTopic(@RequestParam("JMSDestination") String JMSDestination) {
         return null;
@@ -97,38 +97,38 @@ public class TopicController {
      */
     @ApiVersion(1)
     @ApiKey(
-        IsNew = false,
-        Version = 1,
-        ProjectCode = "message",
-        GroupCode = "http",
-        ApiCode = "queue",
-        ApiDescribe = "查看当前主题的所有的订阅者",
-        URL = "/mq/{version}/topic/listProducers",
-        Method = "POST",
-        DataHead = "{'JMSDestination':'主题名称'}",
-        Data = "{'JMSDestination':'testTopic'}",
-        Param = "JMSDestination:String:主题名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
+            IsNew = false,
+            Version = 1,
+            ProjectCode = "message",
+            GroupCode = "http",
+            ApiCode = "queue",
+            ApiDescribe = "查看当前主题的所有的订阅者",
+            URL = "/mq/{version}/topic/listProducers",
+            Method = "POST",
+            DataHead = "",
+            Data = "",
+            Param = "JMSDestination:String:主题名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
     )
     @ResponseBody
     @RequestMapping(
-        value = "/listProducers",
-        method = RequestMethod.POST
+            value = "/listProducers",
+            method = RequestMethod.POST
     )
     public ReturnMessageInfo listProducers(@RequestParam("JMSDestination") String JMSDestination, @RequestParam(
-        value = "conditions",
-        defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
+            value = "conditions",
+            defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
     ) String conditions, @RequestParam(
-        value = "pagenumber",
-        defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
+            value = "pagenumber",
+            defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
     ) int pagenumber, @RequestParam(
-        value = "pagesize",
-        defaultValue = Constants.PAGESIZE_DEFAULT_STR
+            value = "pagesize",
+            defaultValue = Constants.PAGESIZE_DEFAULT_STR
     ) int pagesize, @RequestParam(
-        value = "derection",
-        defaultValue = "ASC"
+            value = "derection",
+            defaultValue = "ASC"
     ) int derection, @RequestParam(
-        value = "orderby",
-        defaultValue = DEFAULT_SORT_COLUMNS
+            value = "orderby",
+            defaultValue = DEFAULT_SORT_COLUMNS
     ) String orderby) {
         return null;
     }
@@ -147,39 +147,39 @@ public class TopicController {
      */
     @ApiVersion(1)
     @ApiKey(
-        IsNew = false,
-        Version = 1,
-        ProjectCode = "message",
-        GroupCode = "http",
-        ApiCode = "queue",
-        ApiDescribe = "查看当前主题的所有的订阅者",
-        URL = "/mq/{version}/topic/listSubscribers",
-        Method = "POST",
-        DataHead = "{'JMSDestination':'主题名称','SubscriberType':'订阅者类型'}",
-        Data = "{'JMSDestination':'testTopic','SubscriberType':'durable'}",
-        Param = "SubscriberType:String:订阅类型，包括all 所有,durable 持久,non_durable 非持久  ,JMSDestination:String:主题名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
+            IsNew = false,
+            Version = 1,
+            ProjectCode = "message",
+            GroupCode = "http",
+            ApiCode = "queue",
+            ApiDescribe = "查看当前主题的所有的订阅者",
+            URL = "/mq/{version}/topic/listSubscribers",
+            Method = "POST",
+            DataHead = "",
+            Data = "",
+            Param = "SubscriberType:String:订阅类型，包括all 所有,durable 持久,non_durable 非持久  ,JMSDestination:String:主题名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
     )
     @ResponseBody
     @RequestMapping(
-        value = "/listSubscribers",
-        method = RequestMethod.POST
+            value = "/listSubscribers",
+            method = RequestMethod.POST
     )
     public ReturnMessageInfo listSubscribers(@RequestParam("JMSDestination") String JMSDestination,
                                              @RequestParam("SubscriberType") String SubscriberType, @RequestParam(
-        value = "conditions",
-        defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
+            value = "conditions",
+            defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
     ) String conditions, @RequestParam(
-        value = "pagenumber",
-        defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
+            value = "pagenumber",
+            defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
     ) int pagenumber, @RequestParam(
-        value = "pagesize",
-        defaultValue = Constants.PAGESIZE_DEFAULT_STR
+            value = "pagesize",
+            defaultValue = Constants.PAGESIZE_DEFAULT_STR
     ) int pagesize, @RequestParam(
-        value = "derection",
-        defaultValue = "ASC"
+            value = "derection",
+            defaultValue = "ASC"
     ) int derection, @RequestParam(
-        value = "orderby",
-        defaultValue = DEFAULT_SORT_COLUMNS
+            value = "orderby",
+            defaultValue = DEFAULT_SORT_COLUMNS
     ) String orderby) {
         return null;
     }
@@ -196,38 +196,38 @@ public class TopicController {
      */
     @ApiVersion(1)
     @ApiKey(
-        IsNew = false,
-        Version = 1,
-        ProjectCode = "message",
-        GroupCode = "http",
-        ApiCode = "queue",
-        ApiDescribe = "查看当前主题的所有的订阅者",
-        URL = "/mq/{version}/topic/listTopics",
-        Method = "POST",
-        DataHead = "{'JMSDestination':'主题名称'}",
-        Data = "{'JMSDestination':'testTopic'}",
-        Param = "conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
+            IsNew = false,
+            Version = 1,
+            ProjectCode = "message",
+            GroupCode = "http",
+            ApiCode = "queue",
+            ApiDescribe = "查看当前主题的所有的订阅者",
+            URL = "/mq/{version}/topic/listTopics",
+            Method = "POST",
+            DataHead = "",
+            Data = "",
+            Param = "conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
     )
     @ResponseBody
     @RequestMapping(
-        value = "/listTopics",
-        method = RequestMethod.POST
+            value = "/listTopics",
+            method = RequestMethod.POST
     )
     public ReturnMessageInfo listTopics(@RequestParam(
-        value = "conditions",
-        defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
+            value = "conditions",
+            defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
     ) String conditions, @RequestParam(
-        value = "pagenumber",
-        defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
+            value = "pagenumber",
+            defaultValue = Constants.CURRENT_PAGE_DEFAULT_STR
     ) int pagenumber, @RequestParam(
-        value = "pagesize",
-        defaultValue = Constants.PAGESIZE_DEFAULT_STR
+            value = "pagesize",
+            defaultValue = Constants.PAGESIZE_DEFAULT_STR
     ) int pagesize, @RequestParam(
-        value = "derection",
-        defaultValue = "ASC"
+            value = "derection",
+            defaultValue = "ASC"
     ) int derection, @RequestParam(
-        value = "orderby",
-        defaultValue = DEFAULT_SORT_COLUMNS
+            value = "orderby",
+            defaultValue = DEFAULT_SORT_COLUMNS
     ) String orderby) {
         return null;
     }
