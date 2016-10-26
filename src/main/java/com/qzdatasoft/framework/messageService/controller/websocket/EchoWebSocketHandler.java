@@ -1,4 +1,4 @@
-package org.jimyth.messageService.websocket.controller;
+package com.qzdatasoft.framework.messageService.controller.websocket;
 
 import org.jimyth.business.app.service.EchoService;
 import org.jimyth.business.app.service.impl.MqttServiceImpl;
@@ -18,6 +18,8 @@ public class EchoWebSocketHandler extends AbstractWebSocketHandler {
 
 
     /** @Descreption  TODO 增加描述 */
+    @Autowired
+    @Qualifier("echoService")
     private final EchoService echoService;
 
     /** @Descreption  TODO 增加描述 */

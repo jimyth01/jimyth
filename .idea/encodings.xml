@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/WebRoot/WEB-INF/jsp/websocket/echo.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/qzdatasoft/framework/messageService" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/qzdatasoft/framework/messageService/controller/http/QueueController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/qzdatasoft/framework/messageService/controller/http/TopicController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/qzdatasoft/framework/messageService/controller/websocket/EchoWebSocketHandler.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/qzdatasoft/framework/messageService/controller/websocket/WebConfig.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/qzdatasoft/framework/messageService/mqtt/MQTTClient4WS.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/qzdatasoft/framework/messageService/mqtt/codec/MQTTWireFormat.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/qzdatasoft/framework/messageService/mqtt/codec/WireFormat.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/jimyth/business/app/service/EchoService.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/jimyth/business/app/service/impl/DefaultEchoService.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/jimyth/business/app/service/impl/MqttServiceImpl.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/jimyth/messageService/mqtt/MQTTClient4WS.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/jimyth/messageService/mqtt/codec/MQTTWireFormat.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/jimyth/messageService/mqtt/codec/WireFormat.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/jimyth/messageService/websocket/controller/EchoWebSocketHandler.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/jimyth/messageService/websocket/controller/WebConfig.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

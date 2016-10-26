@@ -1,4 +1,4 @@
-package org.jimyth.messageService.entity.mq.topic;
+package com.qzdatasoft.framework.messageService.entity.mq.topic;
 
 /**
  * Class Subscriber	消息订阅者

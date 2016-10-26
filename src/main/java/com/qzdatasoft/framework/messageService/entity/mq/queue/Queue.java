@@ -1,6 +1,6 @@
-package org.jimyth.messageService.entity.mq.queue;
+package com.qzdatasoft.framework.messageService.entity.mq.queue;
 
-import org.jimyth.messageService.entity.mq.Destination;
+import com.qzdatasoft.framework.messageService.entity.mq.Destination;
 
 /**
  * Class Queue  队列信息

@@ -1,9 +1,8 @@
-package org.jimyth.messageService.http.controller.bak;
+package com.qzdatasoft.framework.messageService.controller.http;
 
-import com.qzdatasoft.framework.annotation.ApiKey;
-import com.qzdatasoft.framework.common.Constants;
-import com.qzdatasoft.framework.common.ReturnMessageInfo;
-import com.qzdatasoft.framework.common.annotation.apiversion.ApiVersion;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -13,17 +12,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.qzdatasoft.framework.annotation.ApiKey;
+import com.qzdatasoft.framework.common.Constants;
+import com.qzdatasoft.framework.common.ReturnMessageInfo;
+import com.qzdatasoft.framework.common.annotation.apiversion.ApiVersion;
 
 /**
  * 队列维护以及收发消息
- *
  * @author jimyth
  * @version V1.0, 2016.10.23 at 03:02:11 CST
  */
 @Controller
-@RequestMapping(value = "/mq/{version}/queue")
+@RequestMapping(value = "/mq/v1/queue")
 public class QueueController {
 
     /**
@@ -33,7 +33,6 @@ public class QueueController {
 
     /**
      * 创建新的队列
-     *
      * @param JMSDestination 队列的名称
      * @return 创建成功返回(errorcode)
      */
@@ -47,23 +46,25 @@ public class QueueController {
             ApiDescribe = "创建新的队列",
             URL = "/mq/{version}/queue/create",
             Method = "POST",
-            DataHead = "{'JMSDestination':'队列名称'}",
-            Data = "{'JMSDestination':'testqueue'}",
+            DataHead = "",
+            Data = "",
             Param = "JMSDestination:String:队列名称"
     )
     @RequestMapping(
             value = "/create",
-            method = RequestMethod.POST
+            method = RequestMethod.GET
     )
     public ReturnMessageInfo create(@RequestParam("JMSDestination") String JMSDestination) {
-        ReturnMessageInfo result;
-        result = new ReturnMessageInfo(Constants.ERROE_CODE_SUCCESS);
+        ReturnMessageInfo result = new ReturnMessageInfo();
+        result.setErrorCode(Constants.ERROE_CODE_SUCCESS);
+        result.setData("success");
+//        result = new ReturnMessageInfo(Constants.ERROE_CODE_SUCCESS);
+
         return result;
     }
 
     /**
      * 删除消息
-     *
      * @param messageId 消息的ID
      * @return 删除成功返回(errorcode)
      */
@@ -76,14 +77,14 @@ public class QueueController {
             ApiCode = "queue",
             ApiDescribe = "删除消息",
             URL = "/mq/{version}/queue/deleteMessage",
-            Method = "POST",
-            DataHead = "{'JMSDestination':'队列名称'}",
-            Data = "{'JMSDestination':'testqueue'}",
+            Method = "DELETE",
+            DataHead = "",
+            Data = "",
             Param = "messageId:String:消息Id"
     )
     @RequestMapping(
             value = "/deleteMessage",
-            method = RequestMethod.POST
+            method = RequestMethod.DELETE
     )
     public ReturnMessageInfo deleteMessage(@RequestParam("messageId") String messageId) {
         ReturnMessageInfo result;
@@ -95,7 +96,6 @@ public class QueueController {
 
     /**
      * 删除队列
-     *
      * @param JMSDestination 队列的名称
      * @return 删除成功返回(errorcode)
      */
@@ -108,14 +108,14 @@ public class QueueController {
             ApiCode = "queue",
             ApiDescribe = "删除队列",
             URL = "/mq/{version}/queue/deleteQueue",
-            Method = "POST",
-            DataHead = "{'JMSDestination':'队列名称'}",
-            Data = "{'JMSDestination':'testqueue'}",
+            Method = "DELETE",
+            DataHead = "",
+            Data = "",
             Param = "JMSDestination:String:队列名称"
     )
     @RequestMapping(
             value = "/deleteQueue",
-            method = RequestMethod.POST
+            method = RequestMethod.DELETE
     )
     public ReturnMessageInfo deleteQueue(@RequestParam("JMSDestination") String JMSDestination) {
         ReturnMessageInfo result;
@@ -127,7 +127,6 @@ public class QueueController {
 
     /**
      * 获取JMSDestination队列当前在线的所有的消费者
-     *
      * @param JMSDestination 队列名称
      * @param conditions     查询条件(JSON)
      * @param pagenumber     页码
@@ -145,14 +144,14 @@ public class QueueController {
             ApiCode = "queue",
             ApiDescribe = "获取队列当前在线的所有的消费者，根据给定的条件查询数据，目前只支持单字段排序",
             URL = "/mq/{version}/queue/listConsumers",
-            Method = "POST",
-            DataHead = "{'JMSDestination':'队列名称'}",
-            Data = "{'JMSDestination':'testqueue'}",
+            Method = "GET",
+            DataHead = "",
+            Data = "",
             Param = "JMSDestination:String队列名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
     )
     @RequestMapping(
             value = "/listConsumers",
-            method = RequestMethod.POST
+            method = RequestMethod.GET
     )
     public ReturnMessageInfo listConsumers(@RequestParam("JMSDestination") String JMSDestination, @RequestParam(
             value = "conditions",
@@ -190,7 +189,6 @@ public class QueueController {
 
     /**
      * 获取JMSDestination队列的消息
-     *
      * @param JMSDestination 队列的名称
      * @param conditions     查询条件(JSON)
      * @param pagenumber     页码
@@ -208,15 +206,15 @@ public class QueueController {
             ApiCode = "queue",
             ApiDescribe = "获取队列的消息，根据给定的条件查询数据，目前只支持单字段排序",
             URL = "/mq/{version}/queue/listMessages",
-            Method = "POST",
-            DataHead = "{'JMSDestination':'队列名称'}",
-            Data = "{'JMSDestination':'testqueue'}",
+            Method = "GET",
+            DataHead = "",
+            Data = "",
             Param = "JMSDestination:String队列名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
     )
     @ResponseBody
     @RequestMapping(
             value = "/listMessages",
-            method = RequestMethod.POST
+            method = RequestMethod.GET
     )
     public ReturnMessageInfo listMessages(@RequestParam("JMSDestination") String JMSDestination, @RequestParam(
             value = "conditions",
@@ -254,7 +252,6 @@ public class QueueController {
 
     /**
      * 获取JMSDestination队列当前在线的所有的生产者
-     *
      * @param JMSDestination 队列名称
      * @param conditions     查询条件(JSON)
      * @param pagenumber     页码
@@ -272,16 +269,15 @@ public class QueueController {
             ApiCode = "queue",
             ApiDescribe = "获取队列当前在线的所有的生产者，根据给定的条件查询数据，目前只支持单字段排序",
             URL = "/mq/{version}/queue/listProducers",
-            Method = "POST",
-            DataHead = "{'JMSDestination':'队列名称'}",
-            Data = "{'JMSDestination':'testqueue'}",
+            Method = "GET",
+            DataHead = "",
+            Data = "",
             Param = "JMSDestination:String队列名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
-
     )
     @ResponseBody
     @RequestMapping(
             value = "/listProducers",
-            method = RequestMethod.POST
+            method = RequestMethod.GET
     )
     public ReturnMessageInfo listProducers(@RequestParam("JMSDestination") String JMSDestination, @RequestParam(
             value = "conditions",
@@ -319,7 +315,6 @@ public class QueueController {
 
     /**
      * Method  获取所有的队列
-     *
      * @param conditions 查询条件(JSON)
      * @param pagenumber 页码
      * @param pagesize   页面大小
@@ -336,13 +331,15 @@ public class QueueController {
             ApiCode = "queue",
             ApiDescribe = "获取所有的队列，根据给定的条件查询数据，目前只支持单字段排序",
             URL = "/mq/{version}/queue/listQueues",
-            Method = "POST",
+            Method = "GET",
+            DataHead = "",
+            Data = "",
             Param = "conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
     )
     @ResponseBody
     @RequestMapping(
             value = "/listQueues",
-            method = RequestMethod.POST
+            method = RequestMethod.GET
     )
     public ReturnMessageInfo listQueues(@RequestParam(
             value = "conditions",
@@ -380,7 +377,6 @@ public class QueueController {
 
     /**
      * 清除队列中未消费的消息，将其置为已消费
-     *
      * @param JMSDestination 队列名称
      * @return 清理成功返回(errorcode)
      */
@@ -393,15 +389,15 @@ public class QueueController {
             ApiCode = "queue",
             ApiDescribe = "清除队列中未消费的消息，将其置为已消费",
             URL = "/mq/{version}/queue/purge",
-            Method = "POST",
-            DataHead = "{'JMSDestination':'队列名称'}",
-            Data = "{'JMSDestination':'testqueue'}",
+            Method = "DELETE",
+            DataHead = "",
+            Data = "",
             Param = "JMSDestination:String队列名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
     )
     @ResponseBody
     @RequestMapping(
             value = "/purge",
-            method = RequestMethod.POST
+            method = RequestMethod.DELETE
     )
     public ReturnMessageInfo purge(@RequestParam("JMSDestination") String JMSDestination) {
         return null;
@@ -409,7 +405,6 @@ public class QueueController {
 
     /**
      * 同步接收一条消息
-     *
      * @param JMSDestination 队列名称
      * @return 清理成功返回(errorcode)和消息(data)
      */
@@ -422,15 +417,15 @@ public class QueueController {
             ApiCode = "queue",
             ApiDescribe = "接收一条消息",
             URL = "/mq/{version}/queue/receive",
-            Method = "POST",
-            DataHead = "{'JMSDestination':'队列名称'}",
-            Data = "{'JMSDestination':'testqueue'}",
+            Method = "GET",
+            DataHead = "",
+            Data = "",
             Param = "JMSDestination:String队列名称"
     )
     @ResponseBody
     @RequestMapping(
             value = "/receive",
-            method = RequestMethod.POST
+            method = RequestMethod.GET
     )
     public ReturnMessageInfo receive(@RequestParam("JMSDestination") String JMSDestination) {
         return null;
@@ -438,7 +433,6 @@ public class QueueController {
 
     /**
      * 发送文本消息
-     *
      * @param JMSDestination 队列名称
      * @param message        消息内容
      * @return 成功返回发送结果(errorcode)
@@ -453,8 +447,8 @@ public class QueueController {
             ApiDescribe = "发送文本消息",
             URL = "/mq/{version}/queue/send",
             Method = "POST",
-            DataHead = "{'JMSDestination':'队列名称','message':'消息内容'}",
-            Data = "{'JMSDestination':'testqueue','message':'这是一条消息 for testqueue'}",
+            DataHead = "",
+            Data = "",
             Param = "JMSDestination:String队列名称,message:String:消息内容"
     )
     @ResponseBody
@@ -469,7 +463,6 @@ public class QueueController {
 
     /**
      * 根据消息ID查看消息
-     *
      * @param JMSDestination 队列名称
      * @param messageId      消息的Id
      * @return 成功返回(errorcode)和消息(data)
@@ -483,15 +476,15 @@ public class QueueController {
             ApiCode = "queue",
             ApiDescribe = "根据消息ID查看消息",
             URL = "/mq/{version}/queue/viewMessage",
-            Method = "POST",
-            DataHead = "{'JMSDestination':'队列名称','messageId':'消息Id'}",
-            Data = "{'JMSDestination':'testqueue','messageId':'messageId'}",
+            Method = "GET",
+            DataHead = "",
+            Data = "",
             Param = "JMSDestination:String队列名称,messageId:String:消息Id"
     )
     @ResponseBody
     @RequestMapping(
             value = "/viewMessage",
-            method = RequestMethod.POST
+            method = RequestMethod.GET
     )
     public ReturnMessageInfo viewMessage(@RequestParam("JMSDestination") String JMSDestination,
                                          @RequestParam("messageId") String messageId) {
@@ -499,3 +492,5 @@ public class QueueController {
     }
 }
 
+
+//~ Formatted by Jindent --- http://www.jindent.com

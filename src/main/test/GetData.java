@@ -1,7 +1,8 @@
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import org.jimyth.messageService.entity.mq.queue.Queue;
-import org.jimyth.messageService.entity.mq.topic.Topic;
+import com.qzdatasoft.framework.messageService.entity.mq.queue.Queue;
+import com.qzdatasoft.framework.messageService.entity.mq.topic.Topic;
+
 
 /**
  * Created by jimyt on 2016-10-26.

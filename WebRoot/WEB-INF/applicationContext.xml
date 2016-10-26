@@ -23,6 +23,10 @@
 	<context:component-scan base-package="org.jimyth" >
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
+
+	<context:component-scan base-package="com.qzdatasoft.framework" >
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
 	
 	
 	<bean id="propertiesConfigurer"
@@ -49,6 +53,7 @@
 		<property name="basenames">
 			<list>
 				<value>classpath:org/framework/business/model/i18n/userinfo</value>
+				<value>classpath:org/framework/xcode/i18n/framework</value>
 				<value>classpath:org/framework/xcode/i18n/framework</value>
 			</list>
 		</property>

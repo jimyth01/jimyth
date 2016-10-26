@@ -1,4 +1,4 @@
-package org.jimyth.messageService.entity.mq;
+package com.qzdatasoft.framework.messageService.entity.mq;
 
 /**
  * Class Producer	  生产者

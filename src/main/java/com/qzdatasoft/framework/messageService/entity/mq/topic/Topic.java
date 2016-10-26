@@ -1,6 +1,6 @@
-package org.jimyth.messageService.entity.mq.topic;
+package com.qzdatasoft.framework.messageService.entity.mq.topic;
 
-import org.jimyth.messageService.entity.mq.Destination;
+import com.qzdatasoft.framework.messageService.entity.mq.Destination;
 
 /**
  * Class Topic	  主题

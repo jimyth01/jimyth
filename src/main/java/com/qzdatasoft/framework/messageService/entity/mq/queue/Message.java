@@ -1,4 +1,4 @@
-package org.jimyth.messageService.entity.mq.queue;
+package com.qzdatasoft.framework.messageService.entity.mq.queue;
 
 /**
  * Class Message	 消息类

@@ -1,4 +1,4 @@
-package org.jimyth.messageService.websocket.controller;
+package com.qzdatasoft.framework.messageService.controller.websocket;
 
 import org.jimyth.business.app.service.impl.DefaultEchoService;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package org.jimyth.messageService.http.controller;
+package com.qzdatasoft.framework.messageService.controller.http;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,13 +12,13 @@ import com.qzdatasoft.framework.common.ReturnMessageInfo;
 import com.qzdatasoft.framework.common.annotation.apiversion.ApiVersion;
 
 /**
- * Class TopicController      主题维护
+ * 主题维护
  *
  * @author jimyth
  * @version V1.0, 2016.10.23 at 03:08:59 CST
  */
 @Controller
-@RequestMapping(value = "/mq/{version}/")
+@RequestMapping(value = "/mq/{version}/topic")
 public class TopicController {
 
     /**
@@ -70,7 +70,7 @@ public class TopicController {
             ApiCode = "queue",
             ApiDescribe = "删除主题",
             URL = "/mq/{version}/topic/deleteTopic",
-            Method = "POST",
+            Method = "DELETE",
             DataHead = "",
             Data = "",
             Param = "JMSDestination:String:主题名称"
@@ -78,7 +78,7 @@ public class TopicController {
     @ResponseBody
     @RequestMapping(
             value = "/deleteTopic",
-            method = RequestMethod.POST
+            method = RequestMethod.DELETE
     )
     public ReturnMessageInfo deleteTopic(@RequestParam("JMSDestination") String JMSDestination) {
         return null;
@@ -104,7 +104,7 @@ public class TopicController {
             ApiCode = "queue",
             ApiDescribe = "查看当前主题的所有的订阅者",
             URL = "/mq/{version}/topic/listProducers",
-            Method = "POST",
+            Method = "GET",
             DataHead = "",
             Data = "",
             Param = "JMSDestination:String:主题名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
@@ -112,7 +112,7 @@ public class TopicController {
     @ResponseBody
     @RequestMapping(
             value = "/listProducers",
-            method = RequestMethod.POST
+            method = RequestMethod.GET
     )
     public ReturnMessageInfo listProducers(@RequestParam("JMSDestination") String JMSDestination, @RequestParam(
             value = "conditions",
@@ -154,7 +154,7 @@ public class TopicController {
             ApiCode = "queue",
             ApiDescribe = "查看当前主题的所有的订阅者",
             URL = "/mq/{version}/topic/listSubscribers",
-            Method = "POST",
+            Method = "GET",
             DataHead = "",
             Data = "",
             Param = "SubscriberType:String:订阅类型，包括all 所有,durable 持久,non_durable 非持久  ,JMSDestination:String:主题名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
@@ -162,7 +162,7 @@ public class TopicController {
     @ResponseBody
     @RequestMapping(
             value = "/listSubscribers",
-            method = RequestMethod.POST
+            method = RequestMethod.GET
     )
     public ReturnMessageInfo listSubscribers(@RequestParam("JMSDestination") String JMSDestination,
                                              @RequestParam("SubscriberType") String SubscriberType, @RequestParam(
@@ -203,7 +203,7 @@ public class TopicController {
             ApiCode = "queue",
             ApiDescribe = "查看当前主题的所有的订阅者",
             URL = "/mq/{version}/topic/listTopics",
-            Method = "POST",
+            Method = "GET",
             DataHead = "",
             Data = "",
             Param = "conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
@@ -211,7 +211,7 @@ public class TopicController {
     @ResponseBody
     @RequestMapping(
             value = "/listTopics",
-            method = RequestMethod.POST
+            method = RequestMethod.GET
     )
     public ReturnMessageInfo listTopics(@RequestParam(
             value = "conditions",

@@ -14,7 +14,7 @@
 	
 	<!-- 扫描Controller -->
 	<context:component-scan base-package="org.jimyth.business" />
-
+	<context:component-scan base-package="com.qzdatasoft.framework.messageService.controller" />
 	<!-- spring-websocket配置start-->
 	<!--<bean id="websocket" class="org.jimythsiness.app.controller.websocket.WebConfig" />-->
 	<!--<websocket:handlers>-->

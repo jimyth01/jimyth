@@ -4,13 +4,13 @@ package com.qzdatasoft.framework.common;
 import com.qzdatasoft.framework.utils.MessageHelper;
 
 /**
- * 
+ *
  * 通用数据传输结构<br>
  * errorCode 0表示成功，小于0表示出错，大于0由业务定义
- * 
+ *
  * History:<br>
  * . 1.0.0.20160910, com.qzdatasoft.koradji, Create<br>
- * 
+ *
  */
 public class ReturnMessageInfo {
 	private String errorCode = Constants.ERROE_CODE_DEEFAULT; // success成功,
@@ -27,7 +27,7 @@ public class ReturnMessageInfo {
 
 	/**
 	 * 构造函数
-	 * 
+	 *
 	 * @param code
 	 */
 	public ReturnMessageInfo(String code) {
@@ -36,7 +36,7 @@ public class ReturnMessageInfo {
 
 	/**
 	 * 构造函数
-	 * 
+	 *
 	 * @param code
 	 * @param message
 	 */
@@ -50,7 +50,7 @@ public class ReturnMessageInfo {
 
 	/**
 	 * 构造函数
-	 * 
+	 *
 	 * @param code
 	 * @param message
 	 * @param data
@@ -62,7 +62,7 @@ public class ReturnMessageInfo {
 
 	/**
 	 * 获取错误代码
-	 * 
+	 *
 	 * @return
 	 */
 	public String getErrorCode() {
@@ -71,7 +71,7 @@ public class ReturnMessageInfo {
 
 	/**
 	 * 设置错误代码
-	 * 
+	 *
 	 * @param errorCode
 	 */
 	public void setErrorCode(String errorCode) {
@@ -82,7 +82,7 @@ public class ReturnMessageInfo {
 
 	/**
 	 * 获取错误信息
-	 * 
+	 *
 	 * @return
 	 */
 	public String getErrorMessage() {
@@ -91,7 +91,7 @@ public class ReturnMessageInfo {
 
 //	/**
 //	 * 设置错误信息
-//	 * 
+//	 *
 //	 * @param errorMessage
 //	 */
 //	public void setErrorMessage(String errorMessage) {
@@ -100,7 +100,7 @@ public class ReturnMessageInfo {
 
 	/**
 	 * 获取数据对象
-	 * 
+	 *
 	 * @return Object
 	 */
 	public Object getData() {
@@ -109,7 +109,7 @@ public class ReturnMessageInfo {
 
 	/**
 	 * 设置数据对象
-	 * 
+	 *
 	 * @param data
 	 */
 	public void setData(Object data) {

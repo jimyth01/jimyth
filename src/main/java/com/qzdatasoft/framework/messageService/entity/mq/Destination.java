@@ -1,4 +1,4 @@
-package org.jimyth.messageService.entity.mq;
+package com.qzdatasoft.framework.messageService.entity.mq;
 
 /**
  * Class Destination	JMS的目的地
