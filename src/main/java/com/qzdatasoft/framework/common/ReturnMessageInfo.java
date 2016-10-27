@@ -76,8 +76,8 @@ public class ReturnMessageInfo {
 	 */
 	public void setErrorCode(String errorCode) {
 		this.errorCode = errorCode;
-		this.errorMessage = (errorCode == Constants.ERROE_CODE_DEEFAULT) ? Constants.ERROE_CODE_DEFAULT_MESSAGE
-				: MessageHelper.getMessage(errorCode);
+//		this.errorMessage = (errorCode == Constants.ERROE_CODE_DEEFAULT) ? Constants.ERROE_CODE_DEFAULT_MESSAGE
+//				: MessageHelper.getMessage(errorCode);
 	}
 
 	/**
@@ -89,14 +89,14 @@ public class ReturnMessageInfo {
 		return this.errorMessage;
 	}
 
-//	/**
-//	 * 设置错误信息
-//	 *
-//	 * @param errorMessage
-//	 */
-//	public void setErrorMessage(String errorMessage) {
-//		this.errorMessage = errorMessage;
-//	}
+	/**
+	 * 设置错误信息
+	 *
+	 * @param errorMessage
+	 */
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
 
 	/**
 	 * 获取数据对象

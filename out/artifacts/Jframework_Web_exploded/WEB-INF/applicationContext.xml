@@ -54,6 +54,7 @@
 			<list>
 				<value>classpath:org/framework/business/model/i18n/userinfo</value>
 				<value>classpath:org/framework/xcode/i18n/framework</value>
+				<value>classpath:com/qzdatasoft/framework/messageService/i18n/message</value>
 			</list>
 		</property>
 	</bean>

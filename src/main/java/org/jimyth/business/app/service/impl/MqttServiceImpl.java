@@ -1,7 +1,9 @@
 package org.jimyth.business.app.service.impl;
 
+import com.qzdatasoft.framework.messageService.mqtt.codec.MQTTWireFormat;
 import org.apache.activemq.util.ByteSequence;
-import org.jimyth.messageService.mqtt.codec.MQTTWireFormat;
+import org.fusesource.mqtt.codec.CONNACK;
+import org.fusesource.mqtt.codec.CONNECT;
 import org.jimyth.business.app.service.MqttService;
 import org.fusesource.mqtt.codec.MQTTFrame;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.WebSocketSession;
+
+import java.io.IOException;
 
 /**
  * Created by jimyt on 2016-10-18.
@@ -28,20 +32,17 @@ public class MqttServiceImpl implements MqttService {
         return false;
     }
 
-    public boolean sendMsgFromWsToMq(WebSocketSession session, BinaryMessage message) {
-        ByteSequence byteSequence = new ByteSequence(message.getPayload().array());
-//        MQTTWSConnection wsMQTTConnection = new MQTTWSConnection();
-//        wsMQTTConnection.connect();
+    public ByteSequence sendMsgFromWsToMq(WebSocketSession session, BinaryMessage message) {
+        ByteSequence bytes =null;
         try {
+            CONNACK ack = new CONNACK();
+            ack.code(CONNACK.Code.CONNECTION_ACCEPTED);
 
-            MQTTFrame frame = (MQTTFrame) mqttFormat.unmarshal(byteSequence);
-//            wsMQTTConnection.sendFrame(frame);
-        } catch (Exception e) {
+             bytes = mqttFormat.marshal(ack.encode());
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        byteSequence.getData();
-
-        return false;
+        return bytes;
     }
 
 

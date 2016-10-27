@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jimyth.messageService.mqtt;
+package com.qzdatasoft.framework.messageService.mqtt;
 
 import org.apache.activemq.transport.mqtt.MQTTWireFormat;
 import org.apache.activemq.util.ByteSequence;

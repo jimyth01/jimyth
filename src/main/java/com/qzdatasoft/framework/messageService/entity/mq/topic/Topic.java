@@ -11,7 +11,8 @@ import com.qzdatasoft.framework.messageService.entity.mq.Destination;
  */
 public class Topic extends Destination{
 
-
+    public Topic() {
+    }
 }
 
 

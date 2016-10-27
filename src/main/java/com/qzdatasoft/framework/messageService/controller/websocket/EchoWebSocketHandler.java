@@ -1,5 +1,7 @@
 package com.qzdatasoft.framework.messageService.controller.websocket;
 
+import org.apache.activemq.util.ByteSequence;
+import org.fusesource.mqtt.codec.CONNACK;
 import org.jimyth.business.app.service.EchoService;
 import org.jimyth.business.app.service.impl.MqttServiceImpl;
 
@@ -10,6 +12,8 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.AbstractWebSocketHandler;
+
+import java.nio.ByteBuffer;
 
 /**
  * Echo messages by implementing a Spring {@link WebSocketHandler} abstraction.
@@ -40,8 +44,9 @@ public class EchoWebSocketHandler extends AbstractWebSocketHandler {
 
     @Override
     protected void handleBinaryMessage(WebSocketSession session, BinaryMessage message) throws Exception {
-        mqttService.sendMsgFromWsToMq(session,message);
-//        session.sendMessage(message);
+
+        ByteSequence bytes = mqttService.sendMsgFromWsToMq(session, message);
+        session.sendMessage(new BinaryMessage(ByteBuffer.wrap(bytes.getData(), 0, bytes.getLength())));
     }
 
     @Override

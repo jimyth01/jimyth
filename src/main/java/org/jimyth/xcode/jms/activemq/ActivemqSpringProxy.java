@@ -49,7 +49,7 @@ public class ActivemqSpringProxy extends ActivemqProxyFactory{
 
 	public String receiveMessage(String name) throws JMSException {
 		Message message =  jmsTemplate.receive(name);
-		return ((TextMessage) jmsTemplate.receive(name)).getText();
+		return ((TextMessage)message).getText();
 	}
 
 	public void sendMessage( String name, final String message) {

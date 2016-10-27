@@ -16,7 +16,6 @@ import javax.jms.Session;
  */
 public class MessageSender implements MessageCreator{
     
-    @Override
     public Message createMessage(Session session) throws JMSException {
         return session.createTextMessage("sender发送消息..！");
     }
@@ -28,7 +27,6 @@ public class MessageSender implements MessageCreator{
         //template.send(destination, this);//此处的this是一个MessageCreator的类型，实质上调用的是MessageCreator的createMessage的方法
         //也可以用内部类来写，会更清晰,就不需要实现MessageCreator
         template.send(destination, new MessageCreator(){
-            @Override
             public Message createMessage(Session session) throws JMSException {
                 return session.createTextMessage("songjian,现在几点了?");
             }

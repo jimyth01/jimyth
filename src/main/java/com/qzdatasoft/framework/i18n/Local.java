@@ -47,6 +47,9 @@ public class Local {
 	 * @return
 	 */
 	public static final String getMessage(String key) {
+
+
+
 		return getApplicationContext().getMessage(key, null, getSessionLocale(HttpRequestContextHelper.getRequest()));
 	}
 

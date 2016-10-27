@@ -3,6 +3,15 @@ package com.qzdatasoft.framework.messageService.controller.http;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.qzdatasoft.framework.common.ReturnMessageDataList;
+import com.qzdatasoft.framework.messageService.entity.mq.queue.Consumer;
+import com.qzdatasoft.framework.messageService.entity.mq.queue.Message;
+import com.qzdatasoft.framework.messageService.entity.mq.queue.Queue;
+import com.qzdatasoft.framework.messageService.entity.mq.topic.Subscriber;
+import com.qzdatasoft.framework.messageService.entity.mq.topic.Topic;
+import org.jimyth.xcode.jms.activemq.ActivemqSpringProxy;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -26,10 +35,12 @@ import com.qzdatasoft.framework.common.annotation.apiversion.ApiVersion;
 @RequestMapping(value = "/mq/v1/queue")
 public class QueueController {
 
-    /**
-     *
-     */
     private static final String DEFAULT_SORT_COLUMNS = "";
+
+
+    @Autowired
+    @Qualifier("jms_proxy")
+    private ActivemqSpringProxy proxy;
 
     /**
      * 创建新的队列
@@ -50,6 +61,7 @@ public class QueueController {
             Data = "",
             Param = "JMSDestination:String:队列名称"
     )
+    @ResponseBody
     @RequestMapping(
             value = "/create",
             method = RequestMethod.GET
@@ -57,7 +69,16 @@ public class QueueController {
     public ReturnMessageInfo create(@RequestParam("JMSDestination") String JMSDestination) {
         ReturnMessageInfo result = new ReturnMessageInfo();
         result.setErrorCode(Constants.ERROE_CODE_SUCCESS);
-        result.setData("success");
+        result.setErrorMessage("创建成功");
+        List<Object> list = new ArrayList<Object>();
+        list.add(new Topic());
+        list.add(new Queue());
+        list.add(new Consumer());
+        list.add(new Message());
+        list.add(new Subscriber());
+        list.add(new Subscriber());
+        ReturnMessageDataList aa = new ReturnMessageDataList(list.size(),list);
+        result.setData(aa);
 //        result = new ReturnMessageInfo(Constants.ERROE_CODE_SUCCESS);
 
         return result;
@@ -82,6 +103,7 @@ public class QueueController {
             Data = "",
             Param = "messageId:String:消息Id"
     )
+    @ResponseBody
     @RequestMapping(
             value = "/deleteMessage",
             method = RequestMethod.DELETE
@@ -142,11 +164,11 @@ public class QueueController {
             ProjectCode = "message",
             GroupCode = "http",
             ApiCode = "queue",
-            ApiDescribe = "获取队列当前在线的所有的消费者，根据给定的条件查询数据，目前只支持单字段排序",
+            ApiDescribe = "获取队列当前在线的所有的消费者",
             URL = "/mq/{version}/queue/listConsumers",
             Method = "GET",
             DataHead = "",
-            Data = "",
+            Data = "[{'clientId':123,'connectionId':123,'sessionId':123,'selector':id=123,'enqueueCounter':0,'dequeueCounter':0,'dispatchedCounter':0,'dispatchedQueueSize':0,'prefetchSize':0,'maximumPendingMessageLimit':0,'exclusive':false,'retroactive':false}]",
             Param = "JMSDestination:String队列名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
     )
     @RequestMapping(
@@ -204,11 +226,11 @@ public class QueueController {
             ProjectCode = "message",
             GroupCode = "http",
             ApiCode = "queue",
-            ApiDescribe = "获取队列的消息，根据给定的条件查询数据，目前只支持单字段排序",
+            ApiDescribe = "获取队列的消息",
             URL = "/mq/{version}/queue/listMessages",
             Method = "GET",
-            DataHead = "",
-            Data = "",
+            DataHead = "[{'jmscorrelationID':'回应消息的关联ID','jmsredelivered':是否重发消息,'jmsmessageID':'消息id','jmstype':'消息类型','jmspriority':优先级,'jmstimestamp':时间戳,'jmsreplyTo':回复到'}]",
+            Data= "[{' ':'topic','jmsredelivered':false,'jmsmessageID':'123','jmstype':'','jmspriority':0,'jmstimestamp':0,'jmsreplyTo':'queue'}]",
             Param = "JMSDestination:String队列名称,conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
     )
     @ResponseBody
@@ -267,7 +289,7 @@ public class QueueController {
             ProjectCode = "message",
             GroupCode = "http",
             ApiCode = "queue",
-            ApiDescribe = "获取队列当前在线的所有的生产者，根据给定的条件查询数据，目前只支持单字段排序",
+            ApiDescribe = "获取队列当前在线的所有的生产者",
             URL = "/mq/{version}/queue/listProducers",
             Method = "GET",
             DataHead = "",
@@ -329,11 +351,11 @@ public class QueueController {
             ProjectCode = "message",
             GroupCode = "http",
             ApiCode = "queue",
-            ApiDescribe = "获取所有的队列，根据给定的条件查询数据，目前只支持单字段排序",
+            ApiDescribe = "获取所有的队列",
             URL = "/mq/{version}/queue/listQueues",
             Method = "GET",
             DataHead = "",
-            Data = "",
+            Data = "[{'queueSize':队列大小,'name':队列名称,'expiredCount':过期消息数量,'memoryPercentUsage':内存使用,'averageEnqueueTime':平均时间,'enqueueCount':总消息数量,'dequeueCount':已消费消息数量,'inFlightCount':发往客户端尚未ack的消息数量,'memoryLimit':内存限制,'consumerCount':消费者数量}]",
             Param = "conditions:String:查询条件(JSON),pagenumber:Integer:页码,pagesize:Integer:页面大小,derection:String:排序:ASC|DESC,orderby:String:排序字段"
     )
     @ResponseBody
@@ -419,7 +441,7 @@ public class QueueController {
             URL = "/mq/{version}/queue/receive",
             Method = "GET",
             DataHead = "",
-            Data = "",
+            Data = "{'jmscorrelationID':'123','jmsredelivered':false,'jmsmessageID':'123','jmstype':'','jmspriority':4,'jmstimestamp':0,'jmsreplyTo':'queue'}",
             Param = "JMSDestination:String队列名称"
     )
     @ResponseBody
@@ -428,7 +450,18 @@ public class QueueController {
             method = RequestMethod.GET
     )
     public ReturnMessageInfo receive(@RequestParam("JMSDestination") String JMSDestination) {
-        return null;
+        ReturnMessageInfo result = new ReturnMessageInfo();
+        try {
+            String message = proxy.receiveMessage(JMSDestination);
+            result.setErrorCode(Constants.ERROE_CODE_SUCCESS);
+            result.setErrorMessage("接收成功");
+            result.setData(message);
+        }catch (Exception e ){
+            result.setErrorCode(Constants.ERROE_CODE_DEEFAULT);
+            result.setErrorMessage("接收失败");
+            result.setData("");
+        }
+        return result;
     }
 
     /**
@@ -454,11 +487,21 @@ public class QueueController {
     @ResponseBody
     @RequestMapping(
             value = "/send",
-            method = RequestMethod.POST
+            method = RequestMethod.GET
     )
     public ReturnMessageInfo send(@RequestParam("JMSDestination") String JMSDestination,
                                   @RequestParam("message") String message) {
-        return null;
+        ReturnMessageInfo result = new ReturnMessageInfo();
+        try {
+            proxy.sendMessage(JMSDestination,message);
+            result.setErrorCode(Constants.ERROE_CODE_SUCCESS);
+            result.setErrorMessage("发送成功");
+        }catch (Exception e ){
+            result.setErrorCode(Constants.ERROE_CODE_DEEFAULT);
+            result.setErrorMessage("发送失败");
+        }
+        result.setData("");
+        return result;
     }
 
     /**
@@ -478,7 +521,7 @@ public class QueueController {
             URL = "/mq/{version}/queue/viewMessage",
             Method = "GET",
             DataHead = "",
-            Data = "",
+            Data = "{'jmscorrelationID':'123','jmsredelivered':false,'jmsmessageID':'123','jmstype':'','jmspriority':4,'jmstimestamp':0,'jmsreplyTo':'queue'}",
             Param = "JMSDestination:String队列名称,messageId:String:消息Id"
     )
     @ResponseBody
@@ -493,4 +536,4 @@ public class QueueController {
 }
 
 
-//~ Formatted by Jindent --- http://www.jindent.com
+
